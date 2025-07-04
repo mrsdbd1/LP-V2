@@ -1102,10 +1102,10 @@ class RewardPlanView(View):
         select = Select(
             placeholder="Select a reward plan",
             options=[
-                discord.SelectOption(label="Invite Reward: 5 Invites = 8GB", value="5_8"),
-                discord.SelectOption(label="Invite Reward: 10 Invites = 16GB", value="10_16"),
-                discord.SelectOption(label="Invite Reward: 4 Invites = 12GB", value="4_12"),
-                discord.SelectOption(label="Boost Reward (Not Available)", value="boost_na", description="Coming Soon", emoji="🚫")
+                discord.SelectOption(label="Invite Reward: 8 Invites = 16GB", value="5_8"),
+                discord.SelectOption(label="Invite Reward: 15 Invites = 32GB", value="10_16"),
+                discord.SelectOption(label="Boost Reward: 1x Boost = 16GB", value="4_12"),
+                discord.SelectOption(label="Boost Reward (2x Boost = 32GB)", value="4_12"),
             ]
         )
         select.callback = self.select_callback
@@ -1118,7 +1118,7 @@ class RewardPlanView(View):
 
         value = interaction.data["values"][0]
         if value == "boost_na":
-            await interaction.response.send_message("🚫 Boost rewards are not available yet.", ephemeral=True)
+            await interaction.response.send_message("🚫 RDP rewards are not available yet.", ephemeral=True)
             return
 
         invite_count, ram = value.split("_")
